@@ -14,7 +14,12 @@ body {
   background-size: 1000% 400%;
   animation: gradient 15s ease infinite;
 }
-
+.sender {
+  color: red;
+  font-weight: bold;
+}
+.message {
+}
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -157,4 +162,20 @@ body {
 .app {
   display: flex;
   justify-content: center;
+  top: 30px;
+  position: relative;
+}
+.user {
+  height: 39px;
+  width: 62.5%;
+  /* 800/1200 to make it slightly responsive ness*/
+  background: red;
+  position: relative;
+  top: 28px;
+  left: 231px;
+  font-size: 35px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-family: "Texturina", serif;
 }

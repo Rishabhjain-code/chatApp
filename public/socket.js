@@ -2,9 +2,36 @@ socket.on("receive-msg", function (obj) {
     let chatItem = document.createElement("div");
     chatItem.classList.add("chat-item");
     chatItem.classList.add("left");
-    chatItem.innerHTML = `${obj.name}: ${obj.message}`;
+
+    // Desired 
+    // <div class="chat-item left">
+    //     <div class="sender">Harshita Jain:</div>
+    //     <div class="message">Hi</div>
+    // </div>
+
+    let senderDiv = document.createElement("div");
+    senderDiv.classList.add("sender");
+    senderDiv.innerHTML = `${obj.name} : `;
+
+    let messageDiv = document.createElement("div");
+    messageDiv.classList.add("message");
+    messageDiv.innerHTML = obj.message;
+
+    chatItem.appendChild(senderDiv);
+    chatItem.appendChild(messageDiv);
+
+    //random color effect
+    let minIdx = 0;
+    let maxIdx = colorsArray.length;
+    let randomInt = Math.random(); // [0,1)
+    randomInt = randomInt * (maxIdx - minIdx);
+    randomInt = Math.floor(randomInt);
+
+    senderDiv.style.color = colorsArray[randomInt];
+
     chatBox.appendChild(chatItem);
     chatBox.scrollTop = chatBox.scrollHeight;
+    // so that whenever new message comes scrollbrings itself to the scroll height
 })
 
 

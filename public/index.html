@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realtime Chat App</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Texturina:ital,wght@0,500;1,300&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="user"></div>
     <div class="app">
         <div class="online">
             <div class="heading">
@@ -17,6 +20,11 @@
         </div>
         <div class="chat-container">
             <div class="chat-box">
+                <div class="chat-item right">Hello</div>
+                <div class="chat-item left">
+                    <div class="sender">Harshita Jain:</div>
+                    <div class="message">Hi</div>
+                </div>
             </div>
             <div class="chat-input">
                 <div class="chat-type-box">
@@ -34,7 +42,7 @@
         crossorigin="anonymous"></script>
     <script>
         let socket = io.connect("https://realtime-chat-applicatio.herokuapp.com/");
-        // let socket = io.connect("http://localhost:3000"); //for local host
+        // let socket = io.connect("http://localhost:3000"); //for local host and check on local machine
     </script>
     <script src="./script.js"></script>
     <script src="./socket.js"></script>
