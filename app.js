@@ -55,7 +55,7 @@ io.on("connection", function (socket) {
             }
         }
 
-        userDB.slice(idx, 1); //remove from database
+        userDB.splice(idx, 1); //remove from database
         socket.broadcast.emit("left-chat", name);
     })
 })
