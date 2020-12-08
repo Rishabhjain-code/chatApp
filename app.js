@@ -69,6 +69,7 @@ app.get("/", function (req, res) {
     res.redirect("/index.html")
 })
 
-http.listen(3000, () => {
+let port = process.env.PORT || 3000
+http.listen(port, () => {
     console.log("listening on *:3000");
 });
