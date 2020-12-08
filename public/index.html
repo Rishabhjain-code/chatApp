@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!--FOR ELECTRON
+        
+        <div class="name">
+        <div>Enter Your Name : </div>
+        <input type="text" id="input-name">
+    </div> -->
+
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="chat-item left">Hello</div>
+            <div class="chat-item right">Hello</div>
+            <div class="join">Jai shri ram joined</div>
+            <div class="chat-item left">Hello</div>
+            <div class="chat-item right">Hello</div>
+            <div class="leave">He left</div>
+
+            <!-- if added class item as class then it not takes #join dont know why -->
+
+        </div>
+        <div class="chat-input">
+            <div class="chat-type-box">
+                <input type="text" name="" id="chat">
+            </div>
+            <div class="chat-send">Send</div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"
+        integrity="sha512-Jr0UIR/Q8MUX+93zjDOhuDUKLqJZObtwpkLJQcR9qMaLgL0thet39IORuavUaZFkZ8a4ktrUsKPM9mf5LWMduA=="
+        crossorigin="anonymous"></script>
+    <script>
+        // io object received form above cdn (having socket.io code connecting to where you are listening in the app.js)
+        // defining socket to use in all js files
+
+        // const socket = io.connect("http://localhost:3000");
+
+        const socket = io.connect("https://realtime-chat-applicatio.herokuapp.com/");
+
+        // as soon as this line runs the connection event from the app.js will be fired - all handled internally
+    </script>
+    <script src="./script.js"></script>
+    <script src="./socket.js"></script>
+</body>
+
+</html>
+
+<!-- common css to the chat item and right left effects by using the 
+float property of the css -->

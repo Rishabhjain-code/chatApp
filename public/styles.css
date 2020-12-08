@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0px;
+}
+
+.chat-container {
+  /* background: aliceblue;
+  height: 500px;
+  width: 650px;
+  margin: auto;
+  margin-top: 3%; */
+
+  margin: auto;
+  width: 903px;
+  margin-top: 32px;
+}
+.chat-box {
+  /* height: 90%;
+  overflow: auto; */
+  /* to prevent it from overflowinf the div of chat typings */
+
+  padding-top: 4px;
+  border-radius: 12px;
+  background: #70ccee;
+  height: 32.5rem;
+  width: 100%;
+  overflow: auto;
+  background-image: url("./background.jpg");
+  background-size: 371px;
+
+  /* resizing background image */
+
+  /* The overflow CSS shorthand property sets the desired behavior for an element's overflow — i.e. when an element's content is too big to fit in its block formatting context — in both directions.
+  visible it shows
+  hidden content removed
+  scroll bar in both direction
+  auto jis direction m extra vha scroll bar */
+}
+.chat-item {
+  /* height: 35px;
+  width: 45%; */
+
+  /* dynamic sizing */
+
+  /* max-width: min-content;
+  min-width: 40%;
+  border-radius: 15px;
+  padding: 7px;
+  margin: 10px; */
+
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid blanchedalmond;
+  margin: 10px;
+  border-radius: 17px;
+  align-items: center;
+  max-width: min-content;
+  min-width: 40%;
+  min-height: 30px;
+  padding: 7px 3px 6px 9px; /*top right bottom left clockwise declare at once*/
+}
+.right {
+  /* background: mediumblue;
+    color: white;
+    justify-content: center;
+    float: right;
+    clear: both; */
+  /* to show one in a line or give chatbox display block */
+
+  float: right;
+  clear: both;
+  background: #dbf6e9;
+  /* margin-bottom: 24px; */
+}
+.left {
+  /* background: white;
+  justify-content: center;
+  float: left;
+  clear: both; */
+
+  background: snow;
+  /* important to place the divs start here */
+
+  /* float: left; it creates problem in adding join warning in between the text */
+  clear: both;
+  justify-content: center;
+  /* margin-top: 24px; */
+
+  /* important to place the divs end here */
+}
+.chat-input {
+  /* background: white;
+  height: 10%;
+  border: 1px solid antiquewhite;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; */
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: aliceblue;
+  border-radius: 7px;
+  height: 49px;
+}
+.chat-type-box {
+  /* width: 100%;
+  height: 60%; */
+  height: 1.7rem;
+  width: 90%;
+}
+#chat {
+  /* width: 100%;
+  height: 100%; */
+  height: 1.5rem;
+  width: 100%;
+}
+.chat-send {
+  /* border: 1px solid;
+  padding: 5px;
+  border-radius: 10px; */
+
+  border: 1px solid purple;
+  padding: 4px;
+  border-radius: 7px;
+  background: mediumseagreen;
+}
+.join {
+  border-radius: 10px;
+  background: rgb(41, 243, 243);
+  font-weight: bold;
+  width: 90%;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 45px;
+  margin-top: 10px;
+}
+.leave {
+  border-radius: 10px;
+  background: red;
+  font-weight: bold;
+  width: 90%;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 45px;
+  margin-top: 10px;
+}
+.name {
+  background: pink;
+  height: 49px;
+  width: 29rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#input-name {
+}

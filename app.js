@@ -14,6 +14,9 @@ const io = require("socket.io")(http, {
         origin: '*',
     }
 });
+
+app.use(express.static('public'))
+
 //socket io enabled
 
 //told server isse request aae toh y karna h but front end s bhejna bhi toh padega yhi event
@@ -85,7 +88,8 @@ io.on("connection", function (socket) {
 // })
 
 app.get("/", function (req, res) {
-    res.send("<h1>Welcome to home page !!!</h1>");
+    // res.send("<h1>Welcome to home page !!!</h1>");
+    res.redirect("/index.html")
 });
 
 let port = process.env.PORT || 3000;
