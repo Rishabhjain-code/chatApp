@@ -9,17 +9,23 @@
 </head>
 
 <body>
-
-    <div class="chat-container">
-        <div class="chat-box">
-        </div>
-        <div class="chat-input">
-            <div class="chat-type-box">
-                <input type="text" name="" id="chat">
+    <div class="app">
+        <div class="online">
+            <div class="heading">
+                <h2>Online</h2>
             </div>
-            <div class="chat-send">Send</div>
         </div>
+        <div class="chat-container">
+            <div class="chat-box">
+            </div>
+            <div class="chat-input">
+                <div class="chat-type-box">
+                    <input type="text" name="" id="chat">
+                </div>
+                <div class="chat-send">Send</div>
+            </div>
 
+        </div>
     </div>
     <!-- <script src = "http://localhost:3000/socket.io/socket.io.js"></script> 
     cannot source from here directly thus use cdn -->
@@ -28,6 +34,7 @@
         crossorigin="anonymous"></script>
     <script>
         let socket = io.connect("https://realtime-chat-applicatio.herokuapp.com/");
+        // let socket = io.connect("http://localhost:3000"); //for local host
     </script>
     <script src="./script.js"></script>
     <script src="./socket.js"></script>

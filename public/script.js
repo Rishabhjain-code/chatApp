@@ -1,22 +1,22 @@
 const chatBox = document.querySelector(".chat-box");
 const messageInput = document.querySelector("#chat");
 const send = document.querySelector(".chat-send");
+const onlineDiv = document.querySelector(".online");
 
-let name = "undefined"
+let name;
 name = prompt("Enter your name ");
-socket.emit("new-user-connected" , name);
+socket.emit("new-user-connected", name);
 
-
-send.addEventListener("click" , function(){
+send.addEventListener("click", function () {
     let msg = messageInput.value;
-    if(msg){
+    if (msg) {
         let chatItem = document.createElement("div");
         chatItem.classList.add("chat-item");
         chatItem.classList.add("right");
         chatItem.innerHTML = msg;
         chatBox.appendChild(chatItem);
-        messageInput.value="";
+        messageInput.value = "";
         chatBox.scrollTop = chatBox.scrollHeight;
-        socket.emit("message-send" , msg );
+        socket.emit("message-send", msg);
     }
 })

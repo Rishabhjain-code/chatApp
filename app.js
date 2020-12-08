@@ -19,9 +19,14 @@ const io = require("socket.io")(http, {
 app.use(express.static('public'))
 const userDB = [];
 
+
+
 // when a socket connects to app.js
 io.on("connection", function (socket) {
     console.log(`${socket.id} connected`);
+
+    //handling pending for this socket as other place also when something happen as in on the socket.emit is used
+    socket.emit("handle-pending", userDB);
 
     socket.on("message-send", function (msg) {
         let id = socket.id;
@@ -49,6 +54,7 @@ io.on("connection", function (socket) {
     });
 
     socket.on('disconnect', function () {
+        console.log(`${socket.id} disconnected`);
         let id = socket.id;
         let name;
         let idx;
@@ -61,7 +67,10 @@ io.on("connection", function (socket) {
         }
         // splice function ( idx , count of elements to delte  );
         userDB.splice(idx, 1);
-        socket.broadcast.emit("left-chat", name);
+        socket.broadcast.emit("left-chat", {
+            name: name,
+            db: userDB
+        });
     });
 });
 
