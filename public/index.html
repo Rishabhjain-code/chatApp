@@ -4,19 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Realtime Chat App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
     <div class="chat-container">
         <div class="chat-box">
-            <div class="chat-item left">Hello</div>
-            <div class="chat-item right">Hello</div>
-            <div class="join">Jai shri ram joined</div>
-            <div class="chat-item left">Hello</div>
-            <div class="chat-item right">Hello</div>
-            <div class="leave">He left</div>
         </div>
         <div class="chat-input">
             <div class="chat-type-box">
@@ -26,13 +21,16 @@
         </div>
 
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"
-        integrity="sha512-Jr0UIR/Q8MUX+93zjDOhuDUKLqJZObtwpkLJQcR9qMaLgL0thet39IORuavUaZFkZ8a4ktrUsKPM9mf5LWMduA=="
+    <!-- <script src = "http://localhost:3000/socket.io/socket.io.js"></script> 
+    cannot source from here directly thus use cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
+        integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
         crossorigin="anonymous"></script>
     <script>
-        const socket = io();
+        let socket = io.connect("http://localhost:3000");
     </script>
     <script src="./script.js"></script>
+    <script src="./socket.js"></script>
 </body>
 
 </html>

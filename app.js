@@ -1,24 +1,31 @@
-const express = require("express");
-const app = express(); //creating a server
-const http = require("http").createServer(app); //creating a port via app same used by socket.io
+// npm init -y
+// npm install express => to create server
+// npm install socket.io => to enable socket io
+// npm install nodemon => to automatically refresh server on the changes\
+
+const express = require('express')
 const cors = require('cors')
-app.use(cors());
+
+const app = express(); // create a server
+app.use(cors())
+
+const http = require("http").createServer(app);
 const io = require("socket.io")(http, {
     cors: {
         origin: '*',
     }
 });
-
+// socket io enabled - gives you a socket.io instance object that you can then set up event handlers on.
 app.use(express.static('public'))
+const userDB = [];
 
-const userDB = []; //ony on the server side store it there only
-
+// when a socket connects to app.js
 io.on("connection", function (socket) {
-    console.log(`socket connected ${socket.id}`);
+    console.log(`${socket.id} connected`);
 
-    socket.on("messageSent", function (message) {
+    socket.on("message-send", function (msg) {
         let id = socket.id;
-        let name = "";
+        let name;
         for (let i = 0; i < userDB.length; i++) {
             if (userDB[i].id == id) {
                 name = userDB[i].name;
@@ -26,27 +33,25 @@ io.on("connection", function (socket) {
             }
         }
 
-        let sendingObj = {
+        socket.broadcast.emit("receive-msg", {
             name: name,
-            message: message
-        }
-
-        socket.broadcast.emit("receivedMessage", sendingObj);
-    })
+            message: msg
+        });
+    });
 
     socket.on("new-user-connected", function (name) {
-        let userObj = {
+        let obj = {
             id: socket.id,
             name: name
-        }
-        userDB.push(userObj);
+        };
+        userDB.push(obj);
         socket.broadcast.emit("new-user", name);
-    })
+    });
 
-    socket.on("disconnect", function () {
+    socket.on('disconnect', function () {
         let id = socket.id;
-        let name = "";
-        let idx = 0;
+        let name;
+        let idx;
         for (let i = 0; i < userDB.length; i++) {
             if (userDB[i].id == id) {
                 name = userDB[i].name;
@@ -54,17 +59,16 @@ io.on("connection", function (socket) {
                 break;
             }
         }
-
-        userDB.splice(idx, 1); //remove from database
+        // splice function ( idx , count of elements to delte  );
+        userDB.splice(idx, 1);
         socket.broadcast.emit("left-chat", name);
-    })
-})
-
-app.get("/", function (req, res) {
-    res.redirect("/index.html")
+    });
 });
 
-let port = process.env.PORT || 3000;
-http.listen(port, function () {
-    console.log("Server started at 3000");
+app.get("/", function (req, res) {
+    // res.redirect("/index.html")
 })
+
+http.listen(3000, () => {
+    console.log("listening on *:3000");
+});
