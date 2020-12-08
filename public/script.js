@@ -2,8 +2,8 @@ const chatBox = document.querySelector(".chat-box");
 const messageInput = document.querySelector("#chat");
 const send = document.querySelector(".chat-send");
 
-
-const name = prompt("Enter your name ");
+let name = "undefined"
+name = prompt("Enter your name ");
 socket.emit("new-user-connected" , name);
 
 
